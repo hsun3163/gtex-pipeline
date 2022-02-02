@@ -89,7 +89,7 @@ if __name__=='__main__':
     tpm_df = qtl.io.read_gct(args.tpm_gct, sample_ids=sample_ids, load_description=False)
 
     sample_participant_lookup_s = pd.read_csv(args.sample_participant_lookup, sep='\t', index_col=0, dtype=str, squeeze=True)
-
+    sample_participant_lookup_s.index = sample_participant_lookup_s.index.astype(str)
     # check inputs
     if not np.all(counts_df.columns == tpm_df.columns):
         raise ValueError('Sample IDs in the TPM and read counts files must match.')
